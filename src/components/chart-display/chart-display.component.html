@@ -1,0 +1,26 @@
+<div class="p-6 sm:p-10">
+  <div class="mb-8">
+    @if (isGeneratingImage()) {
+      <div class="aspect-[3/4] w-full max-w-md mx-auto bg-slate-700/50 rounded-lg animate-pulse flex items-center justify-center border border-slate-600">
+         <div class="text-center text-slate-400 p-4">
+            <svg class="animate-spin h-8 w-8 text-amber-300 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <p class="font-semibold text-amber-200">Stvaram viziju Vaše priče...</p>
+            <p class="text-sm mt-1">Boje i oblici se spajaju u sliku.</p>
+        </div>
+      </div>
+    } @else if (illustration()) {
+      <div class="w-full max-w-md mx-auto overflow-hidden rounded-lg border-2 border-amber-300/20 shadow-2xl shadow-amber-500/10">
+         <img [src]="'data:image/jpeg;base64,' + illustration()" alt="Slavic-inspired illustration based on the natal chart" class="w-full h-full object-cover">
+      </div>
+    }
+  </div>
+
+  @if (chartData()) {
+    <article class="prose prose-lg prose-invert max-w-none prose-headings:text-amber-200 prose-strong:text-amber-100">
+      <markdown [data]="chartData()"></markdown>
+    </article>
+  }
+</div>

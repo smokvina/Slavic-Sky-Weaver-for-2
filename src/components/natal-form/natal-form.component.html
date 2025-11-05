@@ -1,0 +1,87 @@
+<form [formGroup]="natalForm" (ngSubmit)="onSubmit()" class="space-y-8">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8">
+    
+    <!-- Person A -->
+    <div formGroupName="personA" class="space-y-6 bg-slate-900/30 p-6 rounded-xl border border-slate-700">
+      <h3 class="text-2xl font-semibold text-amber-300 border-b border-slate-700 pb-3 mb-6">Prva Osoba</h3>
+      <div>
+        <label for="nameA" class="block text-sm font-medium text-amber-200 mb-2">Ime</label>
+        <input type="text" id="nameA" formControlName="name" placeholder="Npr. Ana Petrović" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-amber-400 focus:border-amber-400 outline-none transition duration-300">
+        @if (natalForm.get('personA.name')?.invalid && natalForm.get('personA.name')?.touched) {
+          <p class="text-red-400 text-sm mt-1">Ime je obavezno.</p>
+        }
+      </div>
+      <div>
+        <label for="placeA" class="block text-sm font-medium text-amber-200 mb-2">Mjesto Rođenja</label>
+        <input type="text" id="placeA" formControlName="place" placeholder="Npr. Zagreb, Hrvatska" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-amber-400 focus:border-amber-400 outline-none transition duration-300">
+         @if (natalForm.get('personA.place')?.invalid && natalForm.get('personA.place')?.touched) {
+          <p class="text-red-400 text-sm mt-1">Mjesto rođenja je obavezno.</p>
+        }
+      </div>
+      <div>
+        <label for="dateA" class="block text-sm font-medium text-amber-200 mb-2">Datum Rođenja</label>
+        <input type="date" id="dateA" formControlName="date" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-amber-400 focus:border-amber-400 outline-none transition duration-300">
+         @if (natalForm.get('personA.date')?.invalid && natalForm.get('personA.date')?.touched) {
+          <p class="text-red-400 text-sm mt-1">Datum rođenja je obavezan.</p>
+        }
+      </div>
+      <div>
+        <label for="timeA" class="block text-sm font-medium text-amber-200 mb-2">Vrijeme Rođenja</label>
+        <input type="time" id="timeA" formControlName="time" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-amber-400 focus:border-amber-400 outline-none transition duration-300">
+         @if (natalForm.get('personA.time')?.invalid && natalForm.get('personA.time')?.touched) {
+          <p class="text-red-400 text-sm mt-1">Vrijeme rođenja je obavezno.</p>
+        }
+      </div>
+    </div>
+
+    <!-- Person B -->
+    <div formGroupName="personB" class="space-y-6 bg-slate-900/30 p-6 rounded-xl border border-slate-700">
+      <h3 class="text-2xl font-semibold text-amber-300 border-b border-slate-700 pb-3 mb-6">Druga Osoba</h3>
+      <div>
+        <label for="nameB" class="block text-sm font-medium text-amber-200 mb-2">Ime</label>
+        <input type="text" id="nameB" formControlName="name" placeholder="Npr. Marko Horvat" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-amber-400 focus:border-amber-400 outline-none transition duration-300">
+        @if (natalForm.get('personB.name')?.invalid && natalForm.get('personB.name')?.touched) {
+          <p class="text-red-400 text-sm mt-1">Ime je obavezno.</p>
+        }
+      </div>
+      <div>
+        <label for="placeB" class="block text-sm font-medium text-amber-200 mb-2">Mjesto Rođenja</label>
+        <input type="text" id="placeB" formControlName="place" placeholder="Npr. Beograd, Srbija" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-amber-400 focus:border-amber-400 outline-none transition duration-300">
+         @if (natalForm.get('personB.place')?.invalid && natalForm.get('personB.place')?.touched) {
+          <p class="text-red-400 text-sm mt-1">Mjesto rođenja je obavezno.</p>
+        }
+      </div>
+      <div>
+        <label for="dateB" class="block text-sm font-medium text-amber-200 mb-2">Datum Rođenja</label>
+        <input type="date" id="dateB" formControlName="date" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-amber-400 focus:border-amber-400 outline-none transition duration-300">
+         @if (natalForm.get('personB.date')?.invalid && natalForm.get('personB.date')?.touched) {
+          <p class="text-red-400 text-sm mt-1">Datum rođenja je obavezan.</p>
+        }
+      </div>
+      <div>
+        <label for="timeB" class="block text-sm font-medium text-amber-200 mb-2">Vrijeme Rođenja</label>
+        <input type="time" id="timeB" formControlName="time" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-amber-400 focus:border-amber-400 outline-none transition duration-300">
+         @if (natalForm.get('personB.time')?.invalid && natalForm.get('personB.time')?.touched) {
+          <p class="text-red-400 text-sm mt-1">Vrijeme rođenja je obavezno.</p>
+        }
+      </div>
+    </div>
+
+  </div>
+
+  <div class="pt-4 text-center">
+    <button type="submit" [disabled]="isLoading()" class="w-full md:w-auto px-12 py-4 bg-amber-400 text-slate-900 font-bold text-lg rounded-lg hover:bg-amber-300 focus:outline-none focus:ring-4 focus:ring-amber-400 focus:ring-opacity-50 transition-all duration-300 disabled:bg-slate-600 disabled:cursor-not-allowed shadow-lg shadow-amber-500/20 flex items-center justify-center mx-auto">
+      @if (isLoading()) {
+        <span class="flex items-center">
+          <svg class="animate-spin -ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Stvaranje priče...
+        </span>
+      } @else {
+        <span>Otkrij Vašu Priču</span>
+      }
+    </button>
+  </div>
+</form>
