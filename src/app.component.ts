@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, WritableSignal, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { NatalFormComponent, NatalFormData } from './components/natal-form/natal-form.component';
@@ -19,6 +19,8 @@ export class AppComponent {
   illustration: WritableSignal<string | null> = signal(null);
   errorMessage: WritableSignal<string | null> = signal(null);
 
+  @ViewChild('backgroundMusic') backgroundMusic!: ElementRef<HTMLAudioElement>;
+
   constructor(private geminiService: GeminiService) {}
 
   async handleFormSubmit(data: NatalFormData): Promise<void> {
@@ -27,6 +29,8 @@ export class AppComponent {
     this.chartData.set(null);
     this.illustration.set(null);
     this.errorMessage.set(null);
+
+    this.playMusic();
 
     try {
       // Step 1: Generate text analysis
@@ -43,6 +47,7 @@ export class AppComponent {
       console.error('Error generating natal chart or illustration:', error);
       this.errorMessage.set('Došlo je do pogreške prilikom stvaranja Vaše priče ili slike. Molimo pokušajte ponovno.');
       this.isLoading.set(false);
+      this.stopMusic();
     } finally {
       this.isGeneratingImage.set(false);
     }
@@ -54,5 +59,25 @@ export class AppComponent {
     this.isLoading.set(false);
     this.illustration.set(null);
     this.isGeneratingImage.set(false);
+    this.stopMusic();
+  }
+
+  private playMusic(): void {
+    if (this.backgroundMusic?.nativeElement) {
+      this.backgroundMusic.nativeElement.volume = 0.2; // Set a subtle volume
+      const playPromise = this.backgroundMusic.nativeElement.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.error("Audio playback failed:", error);
+        });
+      }
+    }
+  }
+
+  private stopMusic(): void {
+    if (this.backgroundMusic?.nativeElement) {
+      this.backgroundMusic.nativeElement.pause();
+      this.backgroundMusic.nativeElement.currentTime = 0;
+    }
   }
 }
